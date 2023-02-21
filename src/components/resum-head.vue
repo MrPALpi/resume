@@ -1,5 +1,5 @@
 <template>
-       <div class="head-wrap">
+       <div class="wrap">
         <div class="head-avatar">
             <img class="avatar"  @mouseleave="mouseOut" @mouseover="mouseOver"  :src="massImg[0]" alt="" />
         </div>
@@ -62,10 +62,11 @@ h3{
 
    
 }
-.head-wrap {
-    margin: 4% 6% 4% 6%;
+.wrap {
+    margin: 6% 6% 4% 6%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .head-about {
@@ -74,7 +75,7 @@ h3{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 
 
@@ -94,14 +95,15 @@ h3{
 
 .head-avatar {
     width: 40%;
-    margin-right: auto;
-    flex-grow: 1;
+    /* margin-right: auto; */
+    /* flex-grow: 1; */
     padding: 10px 10px 10px;
 }
 
 .avatar {
     border-radius: 5px;
     width: 100%;
+    max-width: 700px;
     transition: all 0.4s ease-in-out;
 }
 
