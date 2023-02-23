@@ -3,30 +3,24 @@
     <div class="sidebar" @click.stop="hideSideBar" v-if="show">
       <div @click.stop class="menu">
         <div class="menuItem">
-          <MyButton @click="hideSideBar" style="
-              font-size: 55px;
-              font-weight: 400;
-              position: absolute;
-              width: 5px;
-              right: 10px;
-              margin: 5px 20px 20px 50px;">X</MyButton>
-          <MyButton style="margin-top: 55px" @click="pushAndClose('/faq')">FAQ</MyButton>
-          <MyButton @click="pushAndClose('/chat')"> Чат</MyButton>
+          <MyButton id="closeSideBar" @click="hideSideBar">X</MyButton>
+          <MyButton style="margin-top: 55px">Здесь могла быть ваша копка навигации</MyButton>
+          <MyButton>Бесполезная кнопка</MyButton>
           <div style="width: 100%; display: flex; justify-content: center">
-            <my-switch></my-switch>
           </div>
         </div>
       </div>
     </div>
   </transition-group>
   <transition name="back">
-    <div @click.stop="hideSideBar" v-if="show" class="back">
+    <div @click="hideSideBar" v-if="show" class="back">
 
     </div>
   </transition>
 </template>
 
 <script>
+import MyButton from './MyButton.vue';
 export default {
   name: "my-sidebar",
   props: {
@@ -34,36 +28,42 @@ export default {
       type: Boolean,
       default: false,
     },
-    darkTheme: false,
+  },
+  components: {
+    MyButton,
   },
   methods: {
-    pushAndClose(push) {
-      this.hideSideBar();
-      this.$router.push(push);
-    },
     hideSideBar() {
-      this.$emit("update:show", false);
-    },
+      this.$emit('update:show', false)
+    }
   },
+
 };
 </script>
 
 <style>
-.back{
+.back {
   position: fixed;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 998;
-  transition: 0.3s ease-in-out ;
+  z-index: 9;
+  transition: 0.3s ease-in-out;
 }
-
+#closeSideBar{
+  font-size: 55px;
+                      font-weight: 400;
+                      position: absolute;
+                      width: 50px;
+                      right: 5px;
+                      margin: 5px 20px 20px 50px;
+}
 .sidebar {
   position: fixed;
   height: 100vh;
-
+  background: none;
   width: 100%;
   top: 0;
 
@@ -74,7 +74,6 @@ export default {
 
 .menu {
   background-color: var(--color-bg);
-
   width: 65%;
 }
 
@@ -84,18 +83,16 @@ export default {
 }
 
 .menuItem .btn {
-  border: none;
+  /* border: none; */
   width: 100%;
-  font-size: 1.05em;
-  background-color: transparent;
-  font-family: var(--font);
-  font-weight: bold;
+  /* font-size: 1.05em; */
+
 }
 
 .menuItem .btn:hover {
-  border: none;
-  background: none;
-  color: var(--color-text);
+  /* border: none; */
+  /* background: none; */
+  color: var(--color-text-special);
 }
 
 .back-enter-active,

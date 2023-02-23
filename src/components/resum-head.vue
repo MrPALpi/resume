@@ -6,12 +6,8 @@
         <div class="head-about">
             <h1 class="hi">Hello!</h1>
             <div class="descriptionMe">
-                <h3>My name is Polina and | am one of many UX/UI designers, but the only one
-you really need! | love what | do and appreciate the quality in my work
-
-In design, the main thing for me is to find a balance between convenience and
-aesthetics, while not angering the developers. | am passionate about paying
-my rent and not starving myself. And of course, design</h3>
+                <h3>Меня зовут Саша, и я студент-программист, каких много нас самом-то деле, но мне нравится, что делаю и я всегда готов совершенствовать свои навыки! Люблю участвовать в создании проектов, которые можно попробовать, увидеть, поэтому решил заняться Frontend разработкой. Вообще я могу не только во Front, например: получил сертификат участника хакатона <span style="color:var(--color-text-special)"> «Цифровой прорыв. Сезон:
+искусственный интеллект в Уральском федеральном округе»</span>, пришлось жёстко кодить на питоне! Подробнее о моих достижения и мне ниже!</h3>
             </div>
         </div>
     </div>
@@ -75,7 +71,7 @@ h3{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* flex-grow: 1; */
+   
 }
 
 
@@ -84,10 +80,10 @@ h3{
     font-family: monospace;
     font-size: 10vw;
     width: 7ch;
-    color: #0057ff;
+    color: var(--color-text-special);
     white-space: nowrap;
     overflow: hidden;
-    border-right: 1vw solid white;
+    border-right: 1vw solid var(--color-text);
     animation: cursor 0.75s step-end infinite, printed_text 5.25s steps(7);
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -95,8 +91,7 @@ h3{
 
 .head-avatar {
     width: 40%;
-    /* margin-right: auto; */
-    /* flex-grow: 1; */
+
     padding: 10px 10px 10px;
 }
 
@@ -116,7 +111,7 @@ h3{
 
 @keyframes cursor {
     0% {
-        border-color: black;
+        border-color: var(--color-text);
     }
 
     50% {
@@ -124,7 +119,7 @@ h3{
     }
 
     100% {
-        border-color: black;
+        border-color: var(--color-text);
     }
 }
 

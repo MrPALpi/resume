@@ -7,34 +7,27 @@
 <script>
 export default {
   name: "MyButton",
-  props: {
-    post: {
-      type: Object,
-      required: true,
-    },
-  },
 };
 </script>
 
 <style>
 .btn {
-  /* align-self: flex-end; */
+  cursor: pointer;
+  margin: 5px;
+  background: none;
   padding: 10px 15px;
-  /* color: #fff; */
-  color: var(--color-text-black);
-  /* border: 2px solid var(--color-text-me); */
+  color: var(--color-text);
+  font-size: 1.4em;
   border: none;
-  /* background-color: var(--color-bg); */
-  border-radius: 8px;
+  font-weight: 600;
+  border-radius: 17px;
   font-family: var(--font);
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
-    border-color 0.2s ease-in-out;
+  transition: background-color 0.4s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.4s ease-in-out;
 }
 
 .btn:hover {
-  color: var(--color-text);
+  color: var(--color-text-special);
 
-  /* border: 2px solid var(--color-bg); */
-  /* background-color: var(--color-text-me); */
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <transition-group name="v-dialog">
+    <transition name="v-dialog">
     <div class="dialog" @click.stop="hideDialog" v-if="show">
         <div @click.stop class="dialog-content">
             <slot>
@@ -7,7 +7,12 @@
             </slot>
         </div>
     </div>
-    </transition-group>
+    </transition>
+    <transition name="back">
+    <div @click.stop="hideDialog" v-if="show" class="back">
+
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -23,7 +28,7 @@ export default{
     },
     methods:{
         hideDialog(){
-            this.$emit('update:show',false)
+            this.$emit('update:show', false);
         }
 
     }
@@ -37,21 +42,56 @@ export default{
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.5);
-    /* transition: background-color 0.5s ease; */
+    background: none;
     position: fixed;
     display: flex;
 }
 .dialog-content{
     margin:auto;
-    
-    /* background: white; */
-    /* background: #101112; */
-    background:#101112 url('https://www.erase.bg/static/assets/images/gradient.842ff9b.svg');
     border-radius: 12px;
+    padding: 15px;
     min-height: 50px;
     min-width: 300px;
     max-width: 40%;
-    padding: 20px;
+    
+}
+
+.back-enter-active,
+.back-leave-active {
+  transition: opacity 0.8s;
+}
+
+.back-enter-from,
+.back-leave-to {
+  opacity: 0;
+}
+
+
+.back{
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  transition: 0.3s ease-in-out ;
+}
+.v-dialog-enter-active,
+.v-dialog-leave-active {
+  transition: all 0.4s;
+}
+
+.v-dialog-enter-from {
+  opacity: 0;
+
+  transform: translate(-100%, 0px);
+
+}
+
+.v-dialog-leave-to {
+  opacity: 0;
+  
+  transform: translate(0px, -100%);
 }
 </style>

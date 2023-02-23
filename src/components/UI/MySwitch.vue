@@ -10,18 +10,20 @@
 <script>
 export default {
     name: "my-switch",
-    props:{
-        darkTheme:'',
+    data(){
+      return{
+        darkTheme: false,
+      }
     },
     methods:{
         changeMode(){
-            if(!this.getDarkTheme){
+            if(!this.darkTheme){
               this.ChangeStyle("light", "dark");
-              this.setDarkTheme(true);
+              this.darkTheme= true;
             }
             else{
               this.ChangeStyle("dark", "light");
-              this.setDarkTheme(false);
+              this.darkTheme=false;
             }
         },
         ChangeStyle(themeRemove,themeAdd){
@@ -34,6 +36,8 @@ export default {
 </script>
 
 <style>
+
+
 .switch input
 {
   display: none;
@@ -41,8 +45,9 @@ export default {
 
 .switch 
 {
+  text-align: left;
     display: inline-block;
-
+  padding: 2px;
   width: 50px; /*=w*/
   height: 20px; /*=h*/
   
@@ -52,15 +57,16 @@ export default {
 
 .slider
 {
+  margin: 2px;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   border-radius: 30px;
-  box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+  box-shadow: 0 0 0 2px #777, 0 0 2px #777;
   cursor: pointer;
-  border: 4px solid transparent;
+  border: 2px solid transparent;
   overflow: hidden;
   transition: 0.2s;
 }
@@ -80,11 +86,11 @@ export default {
 input:checked + .slider:before
 {
   transform: translateX(30px); 
-  background-color: var(--color-text);
+  background-color: var(--color-text-special);
 }
 
 input:checked + .slider
 {
-  box-shadow: 0 0 0 2px var(--color-text), 0 0 8px var(--color-text);
+  box-shadow: 0 0 0 2px var(--color-text-special), 0 0 2px var(--color-text-special);
 }
 </style>

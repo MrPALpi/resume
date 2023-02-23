@@ -1,12 +1,33 @@
+html.light{
+    --color-bg:white;
+    --shadow: 1px 5px 9px 5px #0055ff60;
+    --font: sans-serif;
+    --color-text-special: #0057ff;
+    --color-text:black;
+}
+
+html.dark{
+    --color-bg:#2F3136;
+    --shadow: 1px 5px 9px 5px #0055ff60;
+    --font: sans-serif;
+    --color-text-special: #0057ff;
+    --color-text:white;
+}
+
+
 *, html, body {
+    background-color: var(--color-bg);
+    color:var(--color-text);
     margin:0;
     padding:0;
     /* background-color: #efe9e9;   */
     overflow-x: hidden;
     font-family: sans-serif;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
+
 @media not screen and (min-width: 910px){
-    .text-pad, .head-avatar, .head-about{
+    .head-avatar, .head-about{
         flex-grow: 1;
         flex-wrap: wrap;
     }

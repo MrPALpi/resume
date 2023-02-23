@@ -1,33 +1,115 @@
 <template>
+  <vSideBar v-model:show="showSideBar" />
+
   <resum-head :massImg="massImg"></resum-head>
-  <!-- <aboutMe></aboutMe> -->
-  <sideText></sideText>
+
+  <sideText :side="`right`">
+    <h2 v-scrolleffect class="findWord flying_TextX" v-for="item in items[0]" :key="item">
+      {{ item }}
+    </h2>
+  </sideText>
+
+  <sideText :side="`left`">
+    <h2 v-scrolleffect class="findWord flying_Text_leftX" v-for="item in items[1]" :key="item">
+      {{ item }}
+    </h2>
+  </sideText>
+
+  <sideText>
+    <cart-component @dialogShow="this.dialogShow" @sideBarShow="sideBarShow"></cart-component>
+  </sideText>
+
+  <my-dialog v-model:show="showDialog">
+    <h1 style="font-size: 1.2em; text-align: center;">Обманул! Тут занудный диалог!<br>«Диалог»</h1>
+  </my-dialog>
+  <resumeDraw></resumeDraw>
+  <skillLine></skillLine>
 </template>
 
 <script>
-import resumHead from '@/components/resum-head'
-import sideText from './sideText.vue';
+import resumHead from "@/components/resum-head";
+import sideText from "./sideText.vue";
+import cartComponent from "./cartComponent.vue";
+import MyDialog from "./UI/MyDialog.vue";
+import vSideBar from "./UI/v-sideBar.vue";
+import resumeDraw from "./resumeDraw.vue";
+import skillLine from "./skillLine.vue";
+
 export default {
-  data(){
-    return{
-        massImg:[
-          'https://sun9-45.userapi.com/impg/K8O77N-UFFq02z4uVncAi4vPbjJ8pIaSqT0Iwg/B3x_Gpaaw-0.jpg?size=1440x1442&quality=95&sign=a0642a3ba0ab3ea9bb76b5687c4ed46c&type=album',
-          'https://sun9-6.userapi.com/impg/Ev6gxgbon3YyzOWwP9SsRqZyn8EZG8F8hx-uYw/hmgt9-SUZHo.jpg?size=2268x2265&quality=95&sign=fd9fd893fa3132ab9f953e02475781af&type=album',
-        ]
-    }
-  },
-  name: 'HelloWorld',
-  components:{
+  name: "HelloWorld",
+  components: {
     resumHead,
     sideText,
+    cartComponent,
+    MyDialog,
+    vSideBar,
+    resumeDraw,
+    skillLine,
+
   },
-  props: {
-    msg: String
-  }
-}
+  data() {
+    return {
+      showDialog: false,
+      showSideBar: false,
+      right: 'right',
+      left: 'left',
+      massImg: [
+        "https://sun9-45.userapi.com/impg/K8O77N-UFFq02z4uVncAi4vPbjJ8pIaSqT0Iwg/B3x_Gpaaw-0.jpg?size=1440x1442&quality=95&sign=a0642a3ba0ab3ea9bb76b5687c4ed46c&type=album",
+        "https://sun9-6.userapi.com/impg/Ev6gxgbon3YyzOWwP9SsRqZyn8EZG8F8hx-uYw/hmgt9-SUZHo.jpg?size=2268x2265&quality=95&sign=fd9fd893fa3132ab9f953e02475781af&type=album",
+      ],
+      items: [
+        ['В рамках внеучебной деятельности выступил в роли Frontend разработчика на Vue.js',
+          'Был разработан сайт для обмена "отчётами" или документами.', "Регистрация/авторизация реализована через тг-бота.",
+          "Авторизированные пользователи могут делиться отчётами и скачивать чужие, редактировать/удалять можно только свои"],
+        [
+          "На правах внешнего подрядчика реализовал программу клиентского учёта, администрирование удалённой базы данных. Создано табличное представление данных, редактирование и обновление. Клиентская часть была разработана на Java.",
+          "Серверная часть была разработана на Python.",]
+      ],
+      words: ["сайт", "java", "vue.js", "python"],
+    };
+  },
+  methods: {
+    dialogShow() {
+      this.showDialog = true;
+    },
+    sideBarShow() {
+      this.showSideBar = true;
+    },
+
+
+    createTag(node, index, word) {
+      const range = document.createRange();
+      range.setStart(node.firstChild, index);
+      range.setEnd(node.firstChild, index + word.length);
+      let newTag;
+      if (word === 'сайт') {
+        newTag = document.createElement('a');
+        newTag.href = 'https://juicysquad.site/';
+        newTag.target = '_blank'
+      }
+      else {
+        newTag = document.createElement('span');
+      }
+      newTag.style.color = "var(--color-text-special)";
+      range.surroundContents(newTag);
+    },
+
+    findWord() {
+      const node = document.getElementsByClassName("findWord");
+      this.words.forEach((word) => {
+        for (let i = 0; i < node.length; i++) {
+          let index = node[i].textContent.toLowerCase().indexOf(word);
+          if (index > -1) {
+            this.createTag(node[i], index, word)
+          }
+        }
+      });
+    },
+  },
+  mounted() {
+    this.findWord();
+  },
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>
