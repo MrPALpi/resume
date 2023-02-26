@@ -24,6 +24,7 @@ html.dark{
     overflow-x: hidden;
     font-family: sans-serif;
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+    word-break: break-word;
 }
 
 @media not screen and (min-width: 910px){

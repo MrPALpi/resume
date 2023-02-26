@@ -23,6 +23,7 @@ export default {
 .side{
     display: flex;
     width: 100%;
+    word-break: break-word;
     
 }
 

@@ -1,7 +1,7 @@
 <template>
        <div class="wrap">
         <div class="head-avatar">
-            <img class="avatar"  @mouseleave="mouseOut" @mouseover="mouseOver"  :src="massImg[0]" alt="" />
+            <img class="avatar"  @mouseleave="mouseOut" @mouseover="mouseOver"  :src="require('../assets/'+massImg[0])" alt="" />
         </div>
         <div class="head-about">
             <h1 class="hi">Hello!</h1>
@@ -29,7 +29,7 @@ export default {
                 () =>
                 (document.getElementsByClassName(
                     "avatar"
-                )[0].src = `${this.massImg[1]}`),
+                )[0].src = `${require('../assets/'+this.massImg[1])}`),
                 100
             );
         },
@@ -38,7 +38,7 @@ export default {
                 () =>
                 (document.getElementsByClassName(
                     "avatar"
-                )[0].src = `${this.massImg[0]}`),
+                )[0].src = `${require('../assets/'+this.massImg[0])}`),
                 100
             );
         },
@@ -100,6 +100,7 @@ h3{
     width: 100%;
     max-width: 700px;
     transition: all 0.4s ease-in-out;
+    height: auto;
 }
 
 .avatar:hover {
