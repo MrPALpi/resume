@@ -1,7 +1,7 @@
 <template>
   <vSideBar v-model:show="showSideBar" />
 
-  <resum-head :massImg="massImg"></resum-head>
+  <resum-head :massImg="`first.png`"></resum-head>
 
   <sideText :side="`right`">
     <h2 v-scrolleffect class="findWord flying_TextX" v-for="item in items[0]" :key="item">
@@ -53,10 +53,10 @@ export default {
       showSideBar: false,
       right: 'right',
       left: 'left',
-      massImg: [
-        "first.jpg",
-        "second.jpg",
-      ],
+      // massImg: [
+      //   "first.png",
+      //   "first.png",
+      // ],
       items: [
         ['В рамках внеучебной деятельности выступил в роли Frontend разработчика на Vue.js',
           'Был разработан сайт для обмена "отчётами" или документами.', "Регистрация/авторизация реализована через тг-бота.",

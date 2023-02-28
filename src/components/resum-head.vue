@@ -1,55 +1,50 @@
 <template>
        <div class="wrap">
         <div class="head-avatar">
-            <img class="avatar"  @mouseleave="mouseOut" @mouseover="mouseOver"  :src="require('../assets/'+massImg[0])" alt="" />
+            <img class="avatar"    :src="require('../assets/'+massImg)" alt="" />
         </div>
         <div class="head-about">
             <h1 class="hi">Hello!</h1>
             <div class="descriptionMe">
-                <h3>Меня зовут Саша, и я студент-программист, каких много нас самом-то деле, но мне нравится, что делаю и я всегда готов совершенствовать свои навыки! Люблю участвовать в создании проектов, которые можно попробовать, увидеть, поэтому решил заняться Frontend разработкой. Вообще я могу не только во Front, например: получил сертификат участника хакатона <span style="color:var(--color-text-special)"> «Цифровой прорыв. Сезон:
+                <h3>Меня зовут Саша, и я студент-программист, мне очень нравиться программировать (иногда долго и упорно), всегда готов совершенствовать свои навыки! Люблю участвовать в создании проектов, которые можно попробовать, увидеть, поэтому решил заняться Frontend разработкой. Вообще я могу не только во Front, например: получил сертификат участника хакатона <span style="color:var(--color-text-special)"> «Цифровой прорыв. Сезон:
 искусственный интеллект в Уральском федеральном округе»</span>, пришлось жёстко кодить на питоне! Подробнее о моих достижения и мне ниже <a style="color:var(--color-text-special)" href="https://github.com/MrPALpi">или здесь</a>!</h3>
             </div>
         </div>
     </div>
 </template>
-<!-- @mouseleave="mouseOut" @mouseover="mouseOver" -->
 <script>
 
 export default {
 
     props: {
-        massImg: {
-            reguired: true,
-            default: [],
-        },
+        massImg: ''
     },
-    methods: {
-        mouseOver() {
-            setTimeout(
-                () =>
-                (document.getElementsByClassName(
-                    "avatar"
-                )[0].src = `${require('../assets/'+this.massImg[1])}`),
-                100
-            );
-        },
-        mouseOut() {
-            setTimeout(
-                () =>
-                (document.getElementsByClassName(
-                    "avatar"
-                )[0].src = `${require('../assets/'+this.massImg[0])}`),
-                100
-            );
-        },
-    },
+    // methods: {
+    //     mouseOver() {
+    //         setTimeout(
+    //             () =>
+    //             (document.getElementsByClassName(
+    //                 "avatar"
+    //             )[0].src = `${require('../assets/'+this.massImg[1])}`),
+    //             100
+    //         );
+    //     },
+    //     mouseOut() {
+    //         setTimeout(
+    //             () =>
+    //             (document.getElementsByClassName(
+    //                 "avatar"
+    //             )[0].src = `${require('../assets/'+this.massImg[0])}`),
+    //             100
+    //         );
+    //     },
+    // },
 
 };
 </script>
 
 <style>
 h3{
-    font-family: monospace;
     font-weight: 700;
     font-size: 1.3rem;
 }
@@ -91,8 +86,10 @@ h3{
 
 .head-avatar {
     width: 40%;
-
+    overflow-x: hidden;
+    overflow-y: hidden;
     padding: 10px 10px 10px;
+    border-radius: 5px;
 }
 
 .avatar {
@@ -101,10 +98,16 @@ h3{
     max-width: 700px;
     transition: all 0.4s ease-in-out;
     height: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    
 }
 
 .avatar:hover {
-    filter: invert(100%);
+    /* filter: invert(100%); */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scale: 1.25;
 }
 
 .head-about {}
